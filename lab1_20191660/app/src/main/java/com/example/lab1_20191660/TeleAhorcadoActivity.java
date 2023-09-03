@@ -1,11 +1,18 @@
 package com.example.lab1_20191660;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -60,6 +67,8 @@ public class TeleAhorcadoActivity extends AppCompatActivity implements View.OnCl
     private long tiempoInicioJuego;
     private long tiempoFinJuego;
     private int intentosFallidos = 0;
+    List<String> listaMensajes = new ArrayList<>();
+    private int numeroJuego = 1;
 
 
 
@@ -134,7 +143,14 @@ public class TeleAhorcadoActivity extends AppCompatActivity implements View.OnCl
         buttonY.setOnClickListener(this);
         buttonZ.setOnClickListener(this);
 
+        Button buttonEstadisticas = findViewById(R.id.buttonEstadisticas);
+        buttonEstadisticas.setOnClickListener(v -> mostrarPopupResultados());
+
+
     }
+
+
+
 
     private void iniciarNuevoJuego() {
         tiempoInicioJuego = System.currentTimeMillis();
@@ -146,7 +162,7 @@ public class TeleAhorcadoActivity extends AppCompatActivity implements View.OnCl
         }
         actualizarPalabraAdivinar();
         intentosRestantes = 6;
-        buttonNuevoJuego.setEnabled(false);
+        //buttonNuevoJuego.setEnabled(false);
         habilitarBotonesLetras(true);
         findViewById(R.id.imageViewCabeza).setVisibility(View.INVISIBLE);
         findViewById(R.id.imageViewTorso).setVisibility(View.INVISIBLE);
@@ -210,7 +226,7 @@ public class TeleAhorcadoActivity extends AppCompatActivity implements View.OnCl
 
         if (!letraEncontrada) {
             intentosRestantes--;
-            mostrarImagenIncorrecta(); // Muestra la imagen correspondiente
+            mostrarImagenIncorrecta();
         }
 
         actualizarPalabraAdivinar();
@@ -269,11 +285,14 @@ public class TeleAhorcadoActivity extends AppCompatActivity implements View.OnCl
         if (intentosRestantes == 0 || palabraAdivinarDescubierta()) {
             buttonNuevoJuego.setEnabled(true);
             mostrarMensajeResultado();
+            mostrarMensajeResultado_popup();
         }
 
     }
     private void mostrarMensajeResultado() {
-        tiempoFinJuego = System.currentTimeMillis(); String mensaje;
+        tiempoFinJuego = System.currentTimeMillis();
+        String mensaje;
+        //String mensaje_popup;
         if (intentosRestantes == 0) {
             mensaje = "Perdiste. La palabra era: " + palabraAdivinar;
         } else {
@@ -281,9 +300,49 @@ public class TeleAhorcadoActivity extends AppCompatActivity implements View.OnCl
         }
         long tiempoTranscurrido = (tiempoFinJuego - tiempoInicioJuego) / 1000;
         mensaje += "\nTerminó en: " + tiempoTranscurrido + "s";
-
         Toast.makeText(this, mensaje, Toast.LENGTH_LONG).show();
     }
+    private void mostrarMensajeResultado_popup() {
+        tiempoFinJuego = System.currentTimeMillis();
+        String mensaje;
+        String mensaje_popup;
+        if (intentosRestantes == 0) {
+            mensaje_popup = "Juego " + numeroJuego;
+        } else {
+            mensaje_popup = "Juego " + numeroJuego;
+        }
+        long tiempoTranscurrido = (tiempoFinJuego - tiempoInicioJuego) / 1000;
+
+        mensaje_popup += ": Terminó en " + tiempoTranscurrido + "s";
+        listaMensajes.add(mensaje_popup);
+        numeroJuego++;
+    }
+
+    private void mostrarPopupResultados() {
+        View popupView = getLayoutInflater().inflate(R.layout.dialog_estadisticas, null);
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(popupView);
+
+
+        ListView listViewResultados = popupView.findViewById(R.id.listViewResultados);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listaMensajes);
+        listViewResultados.setAdapter(adapter);
+
+
+        builder.setPositiveButton("Cerrar", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 
 
 
@@ -295,5 +354,6 @@ public class TeleAhorcadoActivity extends AppCompatActivity implements View.OnCl
         }
         return true;
     }
+
 }
 
