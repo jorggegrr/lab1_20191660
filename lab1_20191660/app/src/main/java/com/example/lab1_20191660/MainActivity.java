@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         buttonJugar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Crear un Intent para abrir la nueva actividad
+
                 Intent intent = new Intent(MainActivity.this, TeleAhorcadoActivity.class);
                 startActivity(intent);
             }
