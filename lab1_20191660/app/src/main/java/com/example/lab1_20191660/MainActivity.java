@@ -4,16 +4,19 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private Toolbar toolbar_inicio;
     private TextView textView;
+    private Button buttonJugar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +25,17 @@ public class MainActivity extends AppCompatActivity {
         //
         textView = findViewById(R.id.TeleAhorcado);
         registerForContextMenu(textView);
+
+        buttonJugar = findViewById(R.id.buttonJugar);
+
+        buttonJugar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear un Intent para abrir la nueva actividad
+                Intent intent = new Intent(MainActivity.this, TeleAhorcadoActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override

@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TeleAhorcadoActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView_TeleAhorcado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="TeleAhorcado"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/toolbar" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="187dp"
+        android:layout_height="209dp"
+        android:layout_marginEnd="104dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/antenna" />
+
+
+
+    <ImageView
+        android:id="@+id/imageViewCabeza"
+        android:layout_width="70dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="26dp"
+        android:src="@drawable/head1_sinfondo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        android:visibility="invisible" />
+    <ImageView
+        android:id="@+id/imageViewTorso"
+        android:layout_width="68dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="83dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/torso_sinfondo"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageViewBrazoDer"
+        android:layout_width="64dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="96dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/brazoizq_piernadere_sinfondo"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageViewPiernaDer"
+        android:layout_width="59dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/brazoizq_piernadere_sinfondo"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageViewBrazoIzq"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="96dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/brazo_dere_pierna_izq_sin_fondo"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/imageViewPiernaIzq"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.544"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:srcCompat="@drawable/brazo_dere_pierna_izq_sin_fondo"
+        android:visibility="invisible" />
+
+    <Button
+        android:id="@+id/buttonNuevoJuego"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:text="Nuevo Juego"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewPalabraAdivinar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Palabra: _ _ _ _ _"
+        android:textColor="#050505"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+
+    <GridLayout
+        android:id="@+id/gridLayoutLetras"
+        android:layout_width="403dp"
+        android:layout_height="341dp"
+        android:layout_marginTop="8dp"
+        android:alignmentMode="alignMargins"
+        android:columnCount="7"
+        android:rowCount="4"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNuevoJuego"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPalabraAdivinar"
+        app:layout_constraintVertical_bias="0.1">
+
+        <Button
+            android:id="@+id/buttonA"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:text="A" />
+
+        <Button
+            android:id="@+id/buttonB"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="B" />
+
+        <Button
+            android:id="@+id/buttonC"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="C" />
+
+        <Button
+            android:id="@+id/buttonD"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="D" />
+
+        <Button
+            android:id="@+id/buttonE"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="E" />
+
+        <Button
+            android:id="@+id/buttonF"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="F" />
+
+        <Button
+            android:id="@+id/buttonG"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="G" />
+
+        <Button
+            android:id="@+id/buttonH"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="H" />
+
+        <Button
+            android:id="@+id/buttonI"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="I" />
+
+        <Button
+            android:id="@+id/buttonJ"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="J" />
+
+        <Button
+            android:id="@+id/buttonK"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="K" />
+
+        <Button
+            android:id="@+id/buttonL"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="L" />
+
+        <Button
+            android:id="@+id/buttonM"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="M" />
+
+        <Button
+            android:id="@+id/buttonN"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="N" />
+
+        <Button
+            android:id="@+id/buttonO"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="O" />
+
+        <Button
+            android:id="@+id/buttonP"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="P" />
+
+        <Button
+            android:id="@+id/buttonQ"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="Q" />
+
+        <Button
+            android:id="@+id/buttonR"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="R" />
+
+        <Button
+            android:id="@+id/buttonS"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="S" />
+
+        <Button
+            android:id="@+id/buttonT"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="T" />
+
+        <Button
+            android:id="@+id/buttonU"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="U" />
+
+        <Button
+            android:id="@+id/buttonV"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="V" />
+
+        <Button
+            android:id="@+id/buttonW"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="W" />
+
+        <Button
+            android:id="@+id/buttonX"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="X" />
+
+        <Button
+            android:id="@+id/buttonY"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="Y" />
+
+        <Button
+            android:id="@+id/buttonZ"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:text="Z" />
+
+
+    </GridLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
